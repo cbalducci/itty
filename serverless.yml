@@ -1,0 +1,20 @@
+service: itty
+
+provider:
+  name: aws
+  runtime: go1.x
+  region: eu-west-2
+
+package:
+ exclude:
+   - ./**
+ include:
+   - ./bin/**
+
+functions:
+  itty:
+    handler: bin/itty
+    events:
+      - http:
+          path: itty
+          method: post
